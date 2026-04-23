@@ -1,0 +1,19 @@
+{
+  "name": "prism/backend",
+  "description": "Prism Task Manager — PHP API",
+  "require": {
+    "php": "^8.2",
+    "firebase/php-jwt": "^6.9",
+    "mongodb/mongodb": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Prism\\": "src/"
+    }
+  },
+  "config": {
+    "audit": {
+      "block-insecure": false
+    }
+  }
+}
