@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y libpng-dev libzip-dev libssl-dev pkg-co
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN rm -f /etc/apache2/mods-enabled/mpm_event.conf /etc/apache2/mods-enabled/mpm_event.load \
-    /etc/apache2/mods-enabled/mpm_worker.conf /etc/apache2/mods-enabled/mpm_worker.load \
+RUN find /etc/apache2/mods-enabled/ -name "mpm_*" -delete \
     && ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf \
     && ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load \
     && a2enmod rewrite headers
