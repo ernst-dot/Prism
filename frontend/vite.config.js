@@ -4,12 +4,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: ['frontend-prism-production.up.railway.app'],
     host: '0.0.0.0',
     port: 5173,
+    allowedHosts: ['frontend-prism-production.up.railway.app'],
     proxy: {
       '/api': {
-        target: 'http://backend:80',
+        target: 'https://prism-production-b630.up.railway.app',
         changeOrigin: true,
       },
     },
