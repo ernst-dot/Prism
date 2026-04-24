@@ -1,9 +1,10 @@
 FROM php:8.2-fpm-alpine
 
-RUN apk add --no-cache nginx libpng-dev libzip-dev openssl-dev pkgconfig \
+RUN apk add --no-cache nginx libpng-dev libzip-dev openssl-dev pkgconfig autoconf g++ make \
     && docker-php-ext-install pdo pdo_mysql zip \
     && pecl install mongodb redis \
-    && docker-php-ext-enable mongodb redis
+    && docker-php-ext-enable mongodb redis \
+    && apk del autoconf g++ make
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
